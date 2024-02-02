@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monkey Date</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            overflow: hidden;
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+
+        .fullscreen-emoji {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+            font-size: 24px;
+            animation: float 3s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-20px);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        #question-box {
+            margin-top: 20px;
+        }
+
+        .question-button {
+            display: inline-block;
+            margin: 10px;
+            font-size: 18px;
+            color: black;
+            cursor: pointer;
+        }
+
+        .question-button:hover {
+            transform: scale(1.2);
+        }
+
+        #response-box, #food-question, #flowers-question, #acknowledgment {
+            display: none;
+        }
+
+        .response-button, .food-button, .flowers-button, .acknowledge-button {
+            display: inline-block;
+            margin: 10px;
+            font-size: 18px;
+            color: black;
+            cursor: pointer;
+        }
+
+        .response-button:hover, .food-button:hover, .flowers-button:hover, .acknowledge-button:hover {
+            transform: scale(1.2);
+        }
+
+        #winnie-the-pooh {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #winnie-the-pooh img {
+            width: 300px; /* Adjust the width as needed */
+        }
+
+        #spongebob-image {
+            width: 300px; /* Adjust the width as needed */
+        }
+    </style>
+</head>
+<body>
+    <div id="emoji-container" class="fullscreen-emoji">❤️</div>
+
+    <div id="question-box">
+        <h1>Hello love, will you go out on a date with me?</h1>
+        <img id="spongebob-image" src="https://i.pinimg.com/originals/a9/52/e8/a952e846b9832e5a65fdb50427f6ced9.jpg" alt="SpongeBob">
+        <button class="question-button" onclick="showFoodOptions('yes')">Yes</button>
+        <button class="question-button" onclick="showConvinceMessage('no')">No</button>
+    </div>
+
+    <div id="response-box">
+        <h2>How about I convince you with kisses?</h2>
+        <button class="response-button" onclick="showFoodOptions('yes')">Yes</button>
+        <button class="response-button" onclick="showConvinceMessage('no')">No</button>
+    </div>
+
+    <div id="food-question">
+        <h2>Pick: Breakfast, Lunch, or Dinner</h2>
+        <button class="food-button" onclick="showFlowersQuestion('breakfast')">Breakfast🥯</button>
+        <button class="food-button" onclick="showFlowersQuestion('lunch')">Lunch🍕</button>
+        <button class="food-button" onclick="showFlowersQuestion('dinner')">Dinner🍜</button>
+    </div>
+
+    <div id="flowers-question">
+        <h2>Do you want flowers?</h2>
+        <button class="flowers-button" onclick="showAcknowledgment('yes')">Yes🌹</button>
+        <button class="flowers-button" onclick="showAcknowledgment('no')">No🌼</button>
+    </div>
+
+    <div id="acknowledgment">
+        <h2>Noted love. Will update on the plan soon. I love you! 🤗❤️</h2>
+        <div class="acknowledge-button" id="winnie-the-pooh" onclick="showWinnieThePooh()">
+            <img src="https://i.pinimg.com/originals/8a/c4/1b/8ac41baef6f372300fedcb5a4b7fcf99.jpg" alt="Winnie the Pooh">
+        </div>
+    </div>
+
+    <script>
+        function showConvinceMessage(answer) {
+            if (answer === 'yes') {
+                document.getElementById("emoji-container").innerHTML = "❤️";
+                document.getElementById("question-box").style.display = "none";
+                document.getElementById("response-box").style.display = "none";
+                document.getElementById("food-question").style.display = "block";
+            } else {
+                document.getElementById("emoji-container").innerHTML = "💋💋💋";
+                document.getElementById("question-box").style.display = "none";
+                document.getElementById("response-box").style.display = "block";
+            }
+        }
+
+        function showFoodOptions(meal) {
+            document.getElementById("emoji-container").innerHTML = "❤️"; // Adjust emojis as needed
+            document.getElementById("response-box").style.display = "none";
+            document.getElementById("food-question").style.display = "block";
+        }
+
+        function showFlowersQuestion(meal) {
+            document.getElementById("emoji-container").innerHTML = "🌹🌼"; // Show roses and daisies emojis
+            document.getElementById("food-question").style.display = "none";
+            document.getElementById("flowers-question").style.display = "block";
+        }
+
+        function showAcknowledgment(flowersChoice) {
+            document.getElementById("emoji-container").innerHTML = "🤗❤️"; // Show acknowledgment emojis
+            document.getElementById("flowers-question").style.display = "none";
+            document.getElementById("acknowledgment").style.display = "block";
+            document.getElementById("winnie-the-pooh").style.display = "block";
+        }
+    </script>
+</body>
+</html>
